@@ -1,0 +1,4 @@
+importFrom("graphics", "abline", "lines", "points", "text")
+importFrom("stats", "density")
+exportPattern("^[[:alpha:]]+")
+import(ggplot2)
