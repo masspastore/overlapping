@@ -22,6 +22,8 @@ affiliations:
 
 # Summary
 
+Overlapping can be defined as the area intersected by two or more probability density functions. The idea of overlapping was introduced in a formal way by @gini+livada:1943 and, more recently, it has been applied in several research problems involving, for instance, data fusion [@moravec:1988], information processing [@viola+wells:1997], applied statistics [@inman+bradley:1989], economics [@milanovic+yitzhaki:2001], psychology, as a basis for Cohen's $U$ index [@cohen:1988], McGraw and Wong's $CL$ measure [@mcgraw+wong:1992], and  Huberty's $I$ degree of non-overlap index [@huberty+lowman:2000].
+
 ``overlapping`` is a R package for estimating the overlapping area of two or more empirical distributions. The main idea of the package is to offer an easy way to quantify the similarity (or the difference) between two or more empirical distributions. In addition, the package allows to plot density distributions, highlighting the overlapped area by using the ``ggplot2`` R package [@ggplot2].
 
 
