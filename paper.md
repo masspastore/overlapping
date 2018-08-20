@@ -1,9 +1,9 @@
 ---
-title: 'Overlapping: a R package for Estimating Overlapping in Empirical Distributions'
+title: 'Overlapping: An R package for Estimating Overlapping in Empirical Distributions'
 authors:
-- name: Massimiliano Pastore
-- affiliation: 1
-date: "23 july 2018"
+  - name: Massimiliano Pastore
+    affiliation: 1
+date: "23 July 2018"
 output:
   pdf_document: default
   keep_tex: yes
@@ -13,11 +13,11 @@ output:
   word_document: default
 bibliography: paper.bib
 tags:
-- R
-- statistics
+  - R
+  - statistics
 affiliations:
-- name: Department of Developmental and Social Psychology, University of Padova
-- index: 1
+  - name: Department of Developmental and Social Psychology, University of Padova
+    index: 1
 ---
 
 # Summary
