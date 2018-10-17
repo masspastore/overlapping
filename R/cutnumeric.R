@@ -1,12 +1,14 @@
 cutnumeric <-
-function(x, n = 1000) {
-  ifelse(!isnumeric(x), )
-  xclass <- cut(x, seq(min(x), max(x), length = n), include.lowest = TRUE)
+function(x, n = 1000 ) {
+  ## x = a numeric vector
+  if(!is.numeric(x)) stop("x must be numeric")
+  
+  xclass <- cut(x, seq( min(x), max(x), length = n ), include.lowest = TRUE )
   xnumeric <- NULL
   for (l in xclass) {
-    h <- strsplit(l, ", ")[[1]]
-    h <- gsub("\\[", "", gsub("\\]", "", gsub("\\(", "", h)))
-    xnumeric <- c(xnumeric, mean(as.numeric(h)))
-  }
+    h <- strsplit(l, "," )[[1]]
+    h <- gsub( "\\[", "", gsub("\\]", "", gsub("\\(", "", h ) ) )
+    xnumeric <- c(xnumeric, mean(as.numeric(h)) )
+  } 
   return(xnumeric)
 }
