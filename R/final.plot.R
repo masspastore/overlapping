@@ -1,11 +1,3 @@
-#rm(list=ls())
-#source("/home/el/lavori/Rdevel/overlapping_1.4.0/R/cutnumeric.R")
-#source("/home/el/lavori/Rdevel/overlapping_1.4.0/R/overlap.R")
-#rr <- rnorm(100)
-#x <- list(X1=rr,X2=rt(50,8),X3=rchisq(80,2),X4=rr)
-#out <- overlap(x)
-#OV <- out$OV
-#load("~/lavori/Rdevel/testoverlapping/data/testfinalplot.rda")
 final.plot <- function(x, OV = NULL ) {
   
   has.ggplot2 <- requireNamespace("ggplot2")
@@ -44,6 +36,4 @@ final.plot <- function(x, OV = NULL ) {
   }
 }
 
-#final.plot(x,OV)
-#overlap(x,partial.plot=TRUE,plot=TRUE)
 
