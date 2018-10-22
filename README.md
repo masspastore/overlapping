@@ -35,4 +35,7 @@ out <- overlap( x, plot = TRUE )
 out$OV # estimated overlapped areas
 ```
 
+### Support/Bug Reports
+
+Users may contact the author at `massimiliano.pastore[at]unipd.it` for support or to report issues.
 

@@ -11,14 +11,7 @@ function(x, n = 1000 ) {
   if(!is.numeric(x)) stop("x must be numeric")
   
   xclass <- cut(x, seq( min(x), max(x), length = n ), include.lowest = TRUE )
-#  xnumeric <- NULL
-#  for (l in xclass) {
-#    h <- strsplit(l, "," )[[1]]
-#    h <- gsub( "\\[", "", gsub("\\]", "", gsub("\\(", "", h ) ) )
-#    xnumeric <- c(xnumeric, mean(as.numeric(h)) )
-#  } 
-#  return(xnumeric)
-  
+
   unlist( lapply( xclass, function(b) {
     h <- strsplit( as.character(b), "," )[[1]]
     h <- as.numeric(gsub( "\\[", "", 

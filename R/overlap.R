@@ -21,7 +21,7 @@ overlap <- function(x, nbins = 1000, plot = FALSE, partial.plot = FALSE) {
   }
   dd$xclass <- cut(dd$x, seq(min(dd$x), max(dd$x), length = nbins),
                    include.lowest = TRUE)
-  dd$xnum <- cutnumeric(dd$x)
+  dd$xnum <- cutnumeric(dd$x, n = nbins)
   
   OV <- DD <- xpoints <- NULL
   for (i1 in 1:(length(x)-1)) {
