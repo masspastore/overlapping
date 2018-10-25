@@ -1,23 +1,23 @@
 ---
-title: 'Overlapping: An R package for Estimating Overlapping in Empirical Distributions'
+title: 'Overlapping: a R package for Estimating Overlapping in Empirical Distributions'
 authors:
-  - name: Massimiliano Pastore
-    affiliation: 1
-date: "23 July 2018"
+- name: Massimiliano Pastore
+- affiliation: 1
+date: "23 july 2018"
 output:
-  pdf_document: default
   keep_tex: yes
   self_contained: no
+  pdf_document: default
   html_document:
     df_print: paged
   word_document: default
 bibliography: paper.bib
 tags:
-  - R
-  - statistics
+- R
+- statistics
 affiliations:
-  - name: Department of Developmental and Social Psychology, University of Padova
-    index: 1
+- name: Department of Developmental and Social Psychology, University of Padova
+- index: 1
 ---
 
 # Summary
@@ -28,6 +28,9 @@ Overlapping can be defined as the area intersected by two or more probability de
 
 
 The package is available from GitHub (https://github.com/masspastore/overlapping) and CRAN (https://cran.r-project.org/package=overlapping). A full reference manual can be found at https://cran.r-project.org/web/packages/overlapping/overlapping.pdf.
+
+A recent R package ``overlap`` [@ridout+linkie:2009] offers an implementation of the overlapping index which can be used to analyse temporal activity patterns of animals and species in echology. However, ``overlapping`` package offers a more general approach where overlapping can be computed for any type of variable, allowing for computations with more than two variables.
+
 
 # Examples
 
