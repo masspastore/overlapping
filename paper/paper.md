@@ -3,7 +3,7 @@ title: 'Overlapping: a R package for Estimating Overlapping in Empirical Distrib
 authors:
 - name: Massimiliano Pastore
 - affiliation: 1
-date: "25 October 2018"
+date: 25 October 2018
 output:
   pdf_document: default
   keep_tex: yes
