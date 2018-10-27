@@ -68,7 +68,7 @@ obtaining the figure \ref{overlap}. In the figure are represented the estimated 
 
 ### Examples of real-world analysis
 
-**``overlapping``** package was already used in different publications for many purposes, such as: 1) evaluating group invariance in questionnares, by using parameters bootstrap distributions  [@lionetti+al:2018, @marci+al:2018]; 2) for computing a distance index in antropological measures [@altoe+al:inpress]; 3) for identifying cut-off scores in questionnaires, estimating the intersection points of density distributions [ @pluess+al:2018, @lionetti+al:2018dandelions].  
+**``overlapping``** package was already used in different publications for many purposes, such as: 1) evaluating group invariance in questionnares, by using parameters bootstrap distributions  [@lionetti+al:2018, @marci+al:2018]; 2) for computing a distance index in antropological measures [@altoe+al:inpress]; 3) for identifying cut-off scores in questionnaires, estimating the intersection points of density distributions [@pluess+al:2018, @lionetti+al:2018dandelions].  
 
 # References
 
