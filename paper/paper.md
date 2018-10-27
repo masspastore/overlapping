@@ -10,13 +10,6 @@ affiliations:
 - name: Department of Developmental and Social Psychology, University of Padova
 - index: 1
 date: 25 October 2018
-output:
-  pdf_document: default
-  keep_tex: yes
-  self_contained: no
-  html_document:
-    df_print: paged
-  word_document: default
 bibliography: paper.bib
 ---
 
