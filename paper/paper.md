@@ -5,10 +5,10 @@ tags:
   - statistics
 authors:
   - name: Massimiliano Pastore
-  - affiliation: 1
+    affiliation: 1
 affiliations:
   - name: Department of Developmental and Social Psychology, University of Padova
-  - index: 1
+    index: 1
 date: 25 October 2018
 bibliography: paper.bib 
 ---
