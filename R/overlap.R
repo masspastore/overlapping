@@ -4,14 +4,17 @@
 #' @param nbins number of bins. default = 1000
 #' @param plot  boolean. default is false. 
 #' @param partial.plot boolean. default is false
-#'
-overlap <- function(x, nbins = 1000, plot = FALSE, partial.plot = FALSE) {
+#' @param ... type of kernel see function density
+overlap <- function(x, nbins = 1000, plot = FALSE, partial.plot = FALSE, ... ) {
   if (is.null(names(x))) names(x) <- paste("Y", 1:length(x), sep = "")
   dd <- maxX <- maxY <- NULL
   
   ## density estimation
   for (j in 1:length(x)) {
-    dj <- density(x[[j]], n = nbins)
+    dj <- density(x[[j]], n = nbins, bw = "nrd0", 
+                  kernel = c("gaussian", "epanechnikov", "rectangular",
+                            "triangular", "biweight",
+                            "cosine", "optcosine") )
     maxXj <- dj$x[which(dj$y == max(dj$y))]
     maxYj <- max(dj$y) 
     ddd <- data.frame(x = dj$x, y = dj$y, j = names(x)[j])
@@ -102,7 +105,7 @@ overlap <- function(x, nbins = 1000, plot = FALSE, partial.plot = FALSE) {
   if (plot) {
     has.ggplot2 <- requireNamespace("ggplot2")
     if (has.ggplot2) {
-      if (!isNamespaceLoaded("ggplot2")) attachNamespace("ggplot")
+      if (!isNamespaceLoaded("ggplot2")) attachNamespace("ggplot2")
       print(final.plot(x, OV))
     } else {
       warning("package ggplot2 is missing.")
