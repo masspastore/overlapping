@@ -105,7 +105,6 @@ overlap <- function(x, nbins = 1000, plot = FALSE, partial.plot = FALSE, ... ) {
   if (plot) {
     has.ggplot2 <- requireNamespace("ggplot2")
     if (has.ggplot2) {
-      if (!isNamespaceLoaded("ggplot2")) attachNamespace("ggplot2")
       print(final.plot(x, OV))
     } else {
       warning("package ggplot2 is missing.")
