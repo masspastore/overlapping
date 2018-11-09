@@ -77,5 +77,3 @@ overlap <- function(x, nbins = 1000, plot = FALSE,
   if (plot) print( final.plot(x,OV) )
   return(list(DD=DD,OV= OV,xpoints= xpoints))
 }
-
-#overlap(x,plot = TRUE)
