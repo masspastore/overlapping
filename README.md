@@ -20,7 +20,7 @@ The main function, **overlap**, gives the overlapped estimated area of two or mo
 
 * **overlap**
     + Input: a list of distributions to be compared; each distribution is an element of the list.
-    + Output: a data frame with informations used for computing overlapping (only for graphical purposes) and estimated overlapped areas relative to each couple of distributions.
+    + Output: a data frame with information used for computing overlapping (only for graphical purposes) and estimated overlapped areas relative to each couple of distributions.
      
 
 # Examples
