@@ -12,7 +12,7 @@ final.plot(x, OV = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{list of distributions to be compared; each distribution is an element of the list, see \code{\link{overlap}}}
+\item{x}{list of numerical vector to be compared; each vector is an element of the list, see \code{\link{overlap}}}
   \item{OV}{Optional vector of overlapping areas obtained by \code{\link{overlap}}}
 }
 \details{
@@ -27,15 +27,6 @@ It requires the package \code{ggplot2}.
 \author{
 Massimiliano Pastore
 }
-%\note{
-%Da implementare eventuali aggiunte sui parametri grafici.
-%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%\seealso{
-%\code{\link{xyplot}}
-%}
 \examples{
 set.seed(20150605)
 x <- list(X1=rnorm(100),X2=rt(50,8),X3=rchisq(80,2))

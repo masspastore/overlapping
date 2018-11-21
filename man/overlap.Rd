@@ -5,27 +5,27 @@
 Overlapping estimation
 }
 \description{
-It gives the overlapped estimated area of two or more empirical distributions. %Stima l'area di sovrapposizione tra distribuzioni empiriche. 
+It gives the overlapped estimated area of two or more kernel density estimations from empirical data.
 }
 \usage{
-overlap(x, nbins = 1000, plot = FALSE, 
+overlap(x, nbins = 1024, plot = FALSE, 
     partial.plot = FALSE, boundaries = NULL, ... )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{list of distributions to be compared; each distribution is an element of the list}
-  \item{nbins}{number of equally spaced points at which the overlapping density is evaluated}
+  \item{x}{list of numerical vector to be compared; each vector is an element of the list}
+  \item{nbins}{number of equally spaced points at which the overlapping density is evaluated; see \code{\link{density}} for details}
   \item{plot}{logical, if \code{TRUE}, final plot of estimated densities and overlapped areas is produced}
   \item{partial.plot}{logical, if \code{TRUE}, partial paired distributions are plotted}
   \item{boundaries}{an optional list for bounded distributions, see Details}
   \item{...}{optional arguments to be passed to function \code{\link{density}}}
 }
 \details{
-If the list \code{x} contains more than two elements (i.e. more than two distributions) it computes all overlapping between  paired distributions. Partial plots refer to these paired distributions. 
+If the list \code{x} contains more than two elements (i.e. more than two distributions) it computes all overlapping between paired distributions. Partial plots refer to these paired distributions. 
 
 If \code{plot=TRUE}, all overlapped areas are plotted.  It requires \code{ggplot2}.
 
-The optional list \code{boundaries} must contain two elements: \code{from} and \code{to}, indicating the empirical limits of input variables. Each element must be of length equal to the input data list \code{x} or, at least, length one when all boundaries are equal for all distributions. See Examples below. 
+The optional list \code{boundaries} must contain two elements: \code{from} and \code{to}, indicating the empirical limits of input variables. Each element must be of length equal to the input data list \code{x} or, at least, length one when all boundaries are equal for all distributions. See examples below. 
 
 }
 \value{
