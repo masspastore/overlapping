@@ -1,6 +1,6 @@
 #' Overlap: Estimate Overlap 
 #' 
-#' @param x list of numeric vector
+#' @param x list of numeric vectors
 #' @param nbins number of bins. default = 1024, see function density for details
 #' @param plot  boolean. default is FALSE
 #' @param partial.plot boolean. default is FALSE
