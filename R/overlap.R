@@ -1,13 +1,13 @@
-#' Overlap: Estimate Overlap Between Two Distribution
+#' Overlap: Estimate Overlap 
 #' 
-#' @param x numeric vector
-#' @param nbins number of bins. default = 1000
-#' @param plot  boolean. default is false. 
-#' @param partial.plot boolean. default is false
+#' @param x list of numeric vector
+#' @param nbins number of bins. default = 1024, see function density for details
+#' @param plot  boolean. default is FALSE
+#' @param partial.plot boolean. default is FALSE
 #' @param boundaries an optional list 
-#' @param ... options see function density
+#' @param ... options see function density 
 #' 
-overlap <- function(x, nbins = 1000, plot = FALSE, 
+overlap <- function(x, nbins = 1024, plot = FALSE, 
                     partial.plot = FALSE, boundaries = NULL, ... ) {
 
   if (is.null(names(x))) names(x) <- paste("Y", 1:length(x), sep = "")
@@ -77,3 +77,5 @@ overlap <- function(x, nbins = 1000, plot = FALSE,
   if (plot) print( final.plot(x,OV) )
   return(list(DD=DD,OV= OV,xpoints= xpoints))
 }
+
+#overlap(x,plot = TRUE)
