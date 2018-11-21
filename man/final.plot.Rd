@@ -12,7 +12,7 @@ final.plot(x, OV = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{x}{list of numerical vector to be compared; each vector is an element of the list, see \code{\link{overlap}}}
+\item{x}{list of numerical vectors to be compared; each vector is an element of the list, see \code{\link{overlap}}}
   \item{OV}{Optional vector of overlapping areas obtained by \code{\link{overlap}}}
 }
 \details{

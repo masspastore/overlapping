@@ -13,7 +13,7 @@ overlap(x, nbins = 1024, plot = FALSE,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{list of numerical vector to be compared; each vector is an element of the list}
+  \item{x}{list of numerical vectors to be compared; each vector is an element of the list}
   \item{nbins}{number of equally spaced points at which the overlapping density is evaluated; see \code{\link{density}} for details}
   \item{plot}{logical, if \code{TRUE}, final plot of estimated densities and overlapped areas is produced}
   \item{partial.plot}{logical, if \code{TRUE}, partial paired distributions are plotted}
