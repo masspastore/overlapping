@@ -21,7 +21,7 @@ overlap(x, nbins = 1024, plot = FALSE,
   \item{...}{optional arguments to be passed to function \code{\link{density}}}
 }
 \details{
-If the list \code{x} contains more than two elements (i.e. more than two distributions) it computes all overlapping between paired distributions. Partial plots refer to these paired distributions. 
+If the list \code{x} contains more than two elements (i.e. more than two distributions) it computes overlapping between all paired distributions. Partial plots refer to these paired distributions. 
 
 If \code{plot=TRUE}, all overlapped areas are plotted.  It requires \code{ggplot2}.
 
