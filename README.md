@@ -1,7 +1,7 @@
 # overlapping
 ### Estimation of Overlapping in Empirical Distributions
 
-Overlapping can be defined as the area intersected by two or more probability density functions. The main idea of this package is to offer an easy way to quantify the similarity (or the difference) between two or more empirical distributions.
+Overlapping can be defined as the area intersected by two or more probability density functions. The main idea of this package is to offer an easy way to quantify the similarity (or the difference) between two or more empirical distributions by using the overlap between their kernel density estimates.
 
 # Set up
 
@@ -16,10 +16,10 @@ install_github( "masspastore/overlapping" )
 
 # Main function
 
-The main function, **overlap**, gives the overlapped estimated area of two or more empirical distributions.
+The main function, **overlap**, gives the overlapped estimated area of two or more kernel density estimations from empirical data.
 
 * **overlap**
-    + Input: a list of distributions to be compared; each distribution is an element of the list.
+    + Input: a list of numerical vectors to be compared; each vector is an element of the list.
     + Output: a data frame with information used for computing overlapping (only for graphical purposes) and estimated overlapped areas relative to each couple of distributions.
      
 
