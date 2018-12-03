@@ -16,7 +16,7 @@ install_github( "masspastore/overlapping" )
 
 # Main function
 
-The main function, **overlap**, gives the overlapped estimated area of two or more kernel density estimations from empirical data.
+The main function, **overlap**, provides an approximation of the overlapping area of two or more kernel density estimations from empirical data.
 
 * **overlap**
     + Input: a list of numerical vectors to be compared; each vector is an element of the list.
