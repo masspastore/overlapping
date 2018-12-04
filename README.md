@@ -22,17 +22,20 @@ The main function, **overlap**, provides an approximation of the overlapping are
     + Input: a list of numerical vectors to be compared; each vector is an element of the list.
     + Output: a data frame with information used for computing overlapping (only for graphical purposes) and estimated overlapped areas relative to each couple of distributions.
      
+### Note
+
+The function `overlap()` calls the `density()` function for computing kernel density estimates. Consequently, the estimation of overlapping area depends on method used in this latter function. The algorithm used in `density.default` disperses the mass of the empirical distribution function over a regular grid of at least 512 points and then uses the fast Fourier transform to convolve this approximation with a discretized version of the kernel and then uses linear approximation to evaluate the density at the specified points (see `help(density)` for details).
 
 # Examples
 
-```{r}
+```{r,results="markup"}
 set.seed( 20150605 )
 
 # creating a list with three different empirical distributions
 x <- list( X1 = rnorm(100), X2 = rt(50,8), X3 = rchisq(80,2) )
 
 out <- overlap( x, plot = TRUE )
-out$OV # estimated overlapped areas
+out$OV # estimated overlapped areas 
 ```
 
 ### Support/Bug Reports
