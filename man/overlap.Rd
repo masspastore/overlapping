@@ -8,7 +8,7 @@ Overlapping estimation
 It gives the overlapped estimated area of two or more kernel density estimations from empirical data.
 }
 \usage{
-overlap(x, nbins = 1024, plot = FALSE, 
+overlap( x, nbins = 1024, plot = FALSE, 
     partial.plot = FALSE, boundaries = NULL, ... )
 }
 %- maybe also 'usage' for other objects documented here.
@@ -41,9 +41,12 @@ It returns a list containing the following components:
   \item{xpoints }{List of abscissas of intersection points among the density curves.}
 %% ...
 }
-%\references{
-%% ~put references to the literature/web site here ~
-%}
+\references{
+Pastore, M. (2018). Overlapping: a R package for Estimating Overlapping in Empirical Distributions. The Journal of Open Source Software, 3 (32), 1023.
+        URL: \url{https://doi.org/10.21105/joss.01023}
+        
+Pastore, M., Calcagnì, A. (2019). Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index. Frontiers in Psychology, 10:1089. URL: \url{https://doi.org/10.3389/fpsyg.2019.01089}
+}
 \author{
 Massimiliano Pastore
 }

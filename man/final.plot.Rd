@@ -8,7 +8,7 @@ Final plot
 Graphical representation of estimated densities and overlapping area.
 }
 \usage{
-final.plot(x, OV = NULL)
+final.plot( x, OV = NULL )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -1,4 +1,4 @@
 importFrom("graphics", "abline", "lines", "points", "text")
-importFrom("stats", "density")
+importFrom("stats", "density", "sd")
 exportPattern("^[[:alpha:]]+")
-import(ggplot2)
+import(ggplot2, testthat)

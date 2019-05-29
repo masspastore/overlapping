@@ -10,7 +10,7 @@ It divides a numerical variable \code{x} in classes, and returns for each class 
 Internal function, generally not to be called by the user.
 }
 \usage{
-cutnumeric(x, n = 1000)
+cutnumeric( x, n = 1000 )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

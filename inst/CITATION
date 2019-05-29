@@ -1,0 +1,19 @@
+citHeader("Please cite as:")
+
+citEntry(entry = "Article",
+  title        = "Overlapping: a {R} package for Estimating Overlapping in Empirical Distributions.",
+  author       = "Massimiliano Pastore",
+  journal      = "The Journal of Open Source Software",
+  year         = "2018",
+  volume       = "3",
+  number       = "32",
+  pages        = "1023",
+  url          = "https://doi.org/10.21105/joss.01023",
+
+  textVersion  =
+  paste("Pastore, M. (2018).",
+        "Overlapping: a R package for Estimating Overlapping in Empirical Distributions.",
+        "The Journal of Open Source Software, 3 (32), 1023.",
+        "URL https://doi.org/10.21105/joss.01023")
+)
+

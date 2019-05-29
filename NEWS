@@ -1,28 +1,40 @@
-  CHANGES IN overlapping VERSION 1.5
+CHANGES IN overlapping VERSION 1.5.3
 
-CHANGES
+  CHANGES  
+  * added function boot.overlap
+
+CHANGES IN overlapping VERSION 1.5.2
+  
+  CHANGES
+  * updated cutnumeric
+  * updated overlap
+  * added automated test
+
+CHANGES IN overlapping VERSION 1.5
+
+  CHANGES
   * fixed a bug in function final plot
 
-  CHANGES IN overlapping VERSION 1.4
+CHANGES IN overlapping VERSION 1.4
 
-CHANGES
+  CHANGES
   * fixed a bug producing warnings in function overlap
   * changed package for graphics from lattice to ggplot2
 
-  CHANGES IN overlapping VERSION 1.3
+CHANGES IN overlapping VERSION 1.3
 
-CHANGES
-  * fixed a bug error in function final.plot 
-  * updated output list in function overlap
+  CHANGES
+    * fixed a bug error in function final.plot 
+    * updated output list in function overlap
 
-  CHANGES IN overlapping VERSION 1.2
+CHANGES IN overlapping VERSION 1.2
+  
+  CHANGES
+    * changed Depends: R (>= 3.2.0)
 
-CHANGES
-  * changed Depends: R (>= 3.2.0)
+CHANGES IN overlapping VERSION 1.1
 
-  CHANGES IN overlapping VERSION 1.1
-
-CHANGES
-  * fixed a bug error in function final.plot 
-
+  CHANGES
+    * fixed a bug error in function final.plot 
+  
 

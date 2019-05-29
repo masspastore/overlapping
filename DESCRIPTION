@@ -1,13 +1,14 @@
 Package: overlapping
 Type: Package
 Title: Estimation of Overlapping in Empirical Distributions
-Version: 1.5.0
-Date: 2017-06-15
+Version: 1.5.3
+Date: 2019-05-28
 Author: Massimiliano Pastore
 Maintainer: Massimiliano Pastore <massimiliano.pastore@unipd.it>
-Description: Functions for estimating the overlapping area of two or more empirical distributions.
-Depends: R (>= 3.0.0), ggplot2
+Description: Functions for estimating the overlapping area of two or more kernel density estimations from empirical data.
+Depends: R (>= 3.0.0), ggplot2, testthat
 License: GPL-2
+Encoding: UTF-8
 NeedsCompilation: no
 Packaged: 2016-06-24 06:55:50 UTC; el
 Repository: CRAN

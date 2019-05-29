@@ -1,5 +1,9 @@
 final.plot <- function(x, OV = NULL ) {
   
+  #has.ggplot2 <- requireNamespace("ggplot2")
+  
+#  if (has.ggplot2) {
+    #if (!isNamespaceLoaded("ggplot2")) attachNamespace("ggplot2")
     AREA <- NULL
     
     for (i1 in 1:(length(x) - 1)) {
@@ -27,7 +31,9 @@ final.plot <- function(x, OV = NULL ) {
       facet_wrap(~k) +
       geom_density(aes(fill = AREA$group), alpha = .35) +
       xlab("") + theme(legend.title = element_blank()) 
-
+#  } #else {
+#    warning("package ggplot2 is missing.")
+#  }
 }
 
 
