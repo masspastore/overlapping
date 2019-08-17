@@ -1,8 +1,8 @@
 Package: overlapping
 Type: Package
 Title: Estimation of Overlapping in Empirical Distributions
-Version: 1.5.3
-Date: 2019-05-28
+Version: 1.5.4
+Date: 2019-08-17
 Author: Massimiliano Pastore
 Maintainer: Massimiliano Pastore <massimiliano.pastore@unipd.it>
 Description: Functions for estimating the overlapping area of two or more kernel density estimations from empirical data.
