@@ -17,3 +17,19 @@ citEntry(entry = "Article",
         "URL https://doi.org/10.21105/joss.01023")
 )
 
+citEntry(entry = "Article",
+  title        = "Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index.",
+  author       = "Massimiliano Pastore and Antonio Calcagnì",
+  journal      = "Frontiers in Psychology",
+  year         = "2019",
+  volume       = "10",
+  pages        = "1089",
+  url          = "https://doi.org/10.3389/fpsyg.2019.01089",
+
+  textVersion  =
+  paste("Pastore, M., Calcagnì A. (2019).",
+        "Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index.",
+        " Frontiers in Psychology, 10:1089.",
+        "URL https://doi.org/10.3389/fpsyg.2019.01089")
+)
+
