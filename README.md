@@ -31,11 +31,34 @@ The function `overlap()` calls the `density()` function for computing kernel den
 ```{r,results="markup"}
 set.seed( 20150605 )
 
+### EXAMPLE 1
 # creating a list with three different empirical distributions
 x <- list( X1 = rnorm(100), X2 = rt(50,8), X3 = rchisq(80,2) )
 
 out <- overlap( x, plot = TRUE )
 out$OV # estimated overlapped areas 
+
+### EXAMPLE 2
+# simulate eight random samples
+dataList <- list()
+for (j in 1:8) dataList <- c(dataList, list(rnorm(30)))
+
+OV <- overlap(dataList) # compute overlapping for all pairs
+head(OV$DD) # see the first rows of this data set
+table(OV$DD$k)        # k indicates the pairs
+
+# plot all pairs
+ggplot( OV$DD, aes( x, y1))+facet_wrap(~k)+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
+  geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+xlab("")+ylab("")
+
+# choose a single pair to be represented
+K <- "Y1-Y2" 
+data <- subset(OV$DD, k==K) # create a subset 
+
+# plot it
+ggplot( data, aes( x, y1 ))+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
+  geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+
+  ggtitle(paste0("Overlap Y1-Y2 = ",round(OV$OV[K]*100,2),"%"))+xlab("")+ylab("")
 ```
 
 ### Support/Bug Reports
