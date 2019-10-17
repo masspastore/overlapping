@@ -48,7 +48,7 @@ head(OV$DD) # see the first rows of this data set
 table(OV$DD$k)        # k indicates the pairs
 
 # plot all pairs
-ggplot( OV$DD, aes( x, y1))+facet_wrap(~k)+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
+ggplot(OV$DD, aes(x,y1))+facet_wrap(~k)+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
   geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+xlab("")+ylab("")
 
 # choose a single pair to be represented
@@ -56,7 +56,7 @@ K <- "Y1-Y2"
 data <- subset(OV$DD, k==K) # create a subset 
 
 # plot it
-ggplot( data, aes( x, y1 ))+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
+ggplot(data, aes(x,y1))+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
   geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+
   ggtitle(paste0("Overlap Y1-Y2 = ",round(OV$OV[K]*100,2),"%"))+xlab("")+ylab("")
 ```
