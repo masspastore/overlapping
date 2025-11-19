@@ -378,9 +378,9 @@ estimations from empirical data.</p>
 <ul>
 <li>Input: a list of numerical vectors to be compared; each vector is an
 element of the list.</li>
-<li>Output: a data frame with information used for computing overlapping
-(only for graphical purposes) and estimated overlapped areas relative to
-each couple of distributions.</li>
+<li>Output: a list containing the estimates of the overlapped areas,
+both for all distributions together and for each pair of
+distributions.</li>
 </ul></li>
 </ul>
 <div id="note" class="section level3">
@@ -417,27 +417,13 @@ areas</p>
 <p>dataList &lt;- list() for (j in 1:8) dataList &lt;- c(dataList,
 list(rnorm(30)))</p>
 <p>OV &lt;- overlap(dataList) # compute overlapping for all pairs
-head(OV<span class="math inline">\(DD) # see the first rows of this data
-set
-table(OV\)</span>DD$k) # k indicates the pairs</p>
+OV<span class="math inline">\(OV # general overlap area
+OV\)</span>OVPairs # paired overlap areas</p>
 </div>
 <div id="plot-all-pairs" class="section level1">
 <h1>plot all pairs</h1>
-<p>ggplot(OV$DD,
-aes(x,y1))+facet_wrap(~k)+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill=“red”)+
-geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill=“blue”)+xlab(““)+ylab(”“)</p>
-</div>
-<div id="choose-a-single-pair-to-be-represented" class="section level1">
-<h1>choose a single pair to be represented</h1>
-<p>K &lt;- “Y1-Y2” data &lt;- subset(OV$DD, k==K) # create a subset</p>
-</div>
-<div id="plot-it" class="section level1">
-<h1>plot it</h1>
-<p>ggplot(data,
-aes(x,y1))+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill=“red”)+
-geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill=“blue”)+
-ggtitle(paste0(“Overlap Y1-Y2
-=”,round(OV$OV[K]*100,2),“%”))+xlab(““)+ylab(”“) ```</p>
+<p>overlap( dataList, plot = TRUE )</p>
+<p>```</p>
 <div id="supportbug-reports" class="section level3">
 <h3>Support/Bug Reports</h3>
 <p>Users may contact the author at

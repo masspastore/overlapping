@@ -20,7 +20,7 @@ The main function, **overlap**, provides an approximation of the overlapping are
 
 * **overlap**
     + Input: a list of numerical vectors to be compared; each vector is an element of the list.
-    + Output: a data frame with information used for computing overlapping (only for graphical purposes) and estimated overlapped areas relative to each couple of distributions.
+    + Output: a list containing the estimates of the overlapped areas, both for all distributions together and for each pair of distributions.
      
 ### Note
 
