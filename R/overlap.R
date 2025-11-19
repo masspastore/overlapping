@@ -1,81 +1,61 @@
-#' Overlap: Estimate Overlap 
-#' 
-#' @param x list of numeric vectors
-#' @param nbins number of bins. default = 1024, see function density for details
-#' @param plot  boolean. default is FALSE
-#' @param partial.plot boolean. default is FALSE
-#' @param boundaries an optional list 
-#' @param ... options see function density 
-#' 
-overlap <- function(x, nbins = 1024, plot = FALSE, 
-                    partial.plot = FALSE, boundaries = NULL, ... ) {
-
+#' ==============================================
+#' @title overlap
+#' @description It gives the overlapped estimated area of two or more kernel density estimations from empirical data.
+#' @param x = list of numerical vectors to be compared; each vector is an element of the list
+#' @param nbins = number of equally spaced points at which the overlapping \ref{\code{density}} is evaluated; see density for details
+#' @param type = type of index (1 = integrale semplice, 2 = proportion)
+#' @param plot = logical, if TRUE, final plot of estimated densities and overlapped areas is produced
+#' @param boundaries = an optional vector indicating the minimum and the maximum 
+#' @param pairsOverlap = logical, 
+#' @param ... = optional arguments to be passed to function \ref{\code{density}}
+#' @author Massimiliano Pastore, Pierfrancesco Alaimo Di Loro and Marco Mingione
+overlap <- function(x, nbins = 1024, type = c( "1", "2" ), 
+      pairsOverlap = TRUE, plot = FALSE, boundaries = NULL, get_xpoints = FALSE, ... ) {
+  
+  # --------------------------------
+  # controls
+  type <- match.arg(type)
+  typePairs <- typeMult <- type
+  if(length(x)<2) stop("To compute the overlapping, you need at least 2 densities!")
+  if (length(x)==2) pairsOverlap <- FALSE 
+  if (type == "2" & pairsOverlap) {
+    typeMult <- "1"
+    warning("type 2 index for multiple overlapping not yet implemented.")
+  }
+  if (pairsOverlap & get_xpoints) {
+    warning("xpoints not implemented when pairsOverlap = TRUE")
+    get_xpoints <- FALSE # solo per overlapping singoli
+  }
+  # --------------------------------
+  
+  # Aggiunge nomi alla lista contenente i vettori di probabilità, se non presenti
   if (is.null(names(x))) names(x) <- paste("Y", 1:length(x), sep = "")
-  dd <- OV <- FUNC <- DD <- xpoints <- COMPTITLE <- NULL
   
-  ## density estimation
-  for (j in 1:length(x)) {
+  BOUND <- boundaries
+  if (is.null(boundaries)) {
+    boundaries <- range(unlist(x))
+  } 
+  outList <- ovmult(x, nbins = nbins, 
+                    type = typeMult, boundaries = boundaries, 
+                    get_xpoints = get_xpoints, ... )
+  
+  if (pairsOverlap) {
+    allcomb <- combn(length(x), 2)
+    ovPairs <- pairsNames <- NULL
     
-    ## boundaries check
-    if (!is.null(boundaries)) {
-      
-      Lbound <- lapply(boundaries,FUN=length)
-      if ((Lbound$from==1)&(Lbound$to==1)) {
-        warning("Boundaries were set all equals")
-        boundaries$from <- rep(boundaries$from,length(x))
-        boundaries$to <- rep(boundaries$to,length(x))
-      } else {
-        if ((Lbound$from!=length(x))|(Lbound$to!=length(x))) {
-          stop("Boundaries not correctly defined")
-        }
-      }
-      
-      from = boundaries$from[j]
-      to = boundaries$to[j]
-      dj <- density(x[[j]], n = nbins, from = from, to = to, ... )
-    } else {
-      dj <- density(x[[j]], n = nbins, ... )  
+    for (j in 1:ncol(allcomb)) {
+      PN <- paste0(names(x)[allcomb[1,j]], "-", names(x)[allcomb[2,j]])
+      pairsNames <- c(pairsNames, PN)
+      ovPairs <- c(ovPairs, ovmult( x[ c(allcomb[1,j],allcomb[2,j]) ], nbins = nbins, 
+                      type = typePairs, boundaries = boundaries, get_xpoints = FALSE, ... )$OV)
     }
-    
-    ddd <- data.frame(x = dj$x, y = dj$y, j = names(x)[j]) 
-    FUNC <- c(FUNC, list(with(ddd,approxfun(x,y))))
-    dd <- rbind(dd, ddd)
+    names(ovPairs) <- pairsNames
+    outList <- list(OV = outList$OV, OVPairs = ovPairs )
   }
   
-  for (i1 in 1:(length(x)-1)) {
-    for (i2 in (i1+1):(length(x))) {
-      comptitle <- paste0(names(x)[i1],"-",names(x)[i2])
-      
-      dd2 <- data.frame(x=dd$x,y1=FUNC[[i1]](dd$x),y2=FUNC[[i2]](dd$x))    
-      dd2[is.na(dd2)] <- 0
-      dd2$ovy <- apply(dd2[,c("y1","y2")],1,min)
-      dd2$ally <- apply(dd2[,c("y1","y2")],1,max,na.rm=TRUE)
-      dd2$dominance <- ifelse(dd2$y1>dd2$y2,1,2)
-      dd2$k <- comptitle
-      
-      OV <- c(OV,sum(dd2$ovy,na.rm = TRUE) / sum(dd2$ally,na.rm = TRUE))
-      
-      dd2 <- dd2[order(dd2$x),]
-      CHANGE <- dd2$x[which(dd2$dominance[2:nrow(dd2)]!=dd2$dominance[1:(nrow(dd2)-1)])]
-      xpoints <- c(xpoints,list(CHANGE))
-      
-      if (partial.plot) {
-        gg <- ggplot(dd2,aes(x,dd2$y1))+theme_bw()+
-          geom_vline(xintercept = CHANGE,lty=2,color="#cccccc")+
-          geom_line()+geom_line(aes(x,dd2$y2))+
-          geom_line(aes(x,dd2$ovy),color="red")+geom_line(aes(x,dd2$ally),color="blue")+
-          ggtitle(comptitle)+xlab("")+ylab("")+
-          theme(plot.title = element_text(hjust=.5))
-        print(gg)
-      }
-      DD <- rbind(DD,dd2)
-      COMPTITLE <- c(COMPTITLE,comptitle)
-    }
+  if (plot) {
+    print( final.plot( x, pairsOverlap, BOUND ) )  
   }
   
-  names(xpoints) <- names(OV) <- COMPTITLE
-  if (plot) print( final.plot(x,OV) )
-  return(list(DD=DD,OV= OV,xpoints= xpoints))
+  return( outList )
 }
-
-#overlap(x,plot = TRUE)

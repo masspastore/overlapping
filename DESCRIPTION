@@ -1,15 +1,31 @@
 Package: overlapping
 Type: Package
 Title: Estimation of Overlapping in Empirical Distributions
-Version: 1.5.4
-Date: 2019-08-17
-Author: Massimiliano Pastore
+Version: 2.3
+Date: 2025-11-18
+Author: Massimiliano Pastore [aut, cre],
+  Pierfrancesco Alaimo Di Loro [ctb],
+  Marco Mingione [ctb],
+  Antonio Calcagni' [ctb]
+Authors@R: c(person(given = "Massimiliano",
+                    family = "Pastore",
+                    role = c("aut","cre"),
+                    email = "massimiliano.pastore@unipd.it"),
+             person(given = "Pierfrancesco",
+                    family = "Alaimo Di Loro",
+                    role = "ctb"),
+             person(given = "Marco",
+                    family = "Mingione",
+                    role = "ctb"),
+             person(given = "Antonio",
+                    family = "Calcagni'",
+                    role = "ctb"))
 Maintainer: Massimiliano Pastore <massimiliano.pastore@unipd.it>
 Description: Functions for estimating the overlapping area of two or more kernel density estimations from empirical data.
 Depends: R (>= 3.0.0), ggplot2, testthat
 License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2016-06-24 06:55:50 UTC; el
+Packaged: 2025-01-07 12:02:56 UTC; kolmogorov
 Repository: CRAN
-Date/Publication: 2016-06-24 09:35:57
+Date/Publication: 2025-01-07 14:40:01 UTC

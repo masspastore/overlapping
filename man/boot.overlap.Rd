@@ -2,42 +2,44 @@
 \alias{boot.overlap}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Nonparametric Bootstrap for estimated overlapping area
+Nonparametric Bootstrap to estimate the overlapping area
 }
 \description{
-Bootstrap the estimated overlapping area of two or more kernel density estimations from empirical data.
+Resampling via non-parametric bootstrap to estimate the overlapping area between two or more kernel density estimations from empirical data.
 }
 \usage{
-boot.overlap( x, B = 1000, ... )
+boot.overlap( x, B = 1000, pairsOverlap = FALSE, ... )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{list of numerical vectors to be compared; each vector is an element of the list}
-  \item{B}{integer, number of bootstrap draws}
-  \item{...}{options, see function \code{\link{overlap}} for details}
+  \item{x}{a list of numerical vectors to be compared (each vector is an element of the list).}
+  \item{B}{integer, number of bootstrap draws.}
+  \item{pairsOverlap}{logical, if \code{TRUE}, available only when the list \code{x} contains more than two elements, it returns the overlapped area relative to each pair of distributions. }
+  \item{...}{options, see function \code{\link{overlap}} for details.}
 }
 \details{
-If the list \code{x} contains more than two elements (i.e. more than two distributions) it computes bootstrap overlapping between all \eqn{q} number of paired distributions. For example, if \code{x} contains three elements, then \eqn{q = 3}; if \code{x} contains four elements, then \eqn{q = 6}, and so on.
+If the list \code{x} contains more than two elements (i.e., more than two distributions) it computes the bootstrap overlapping measure between all the \eqn{q} paired distributions. For example, if \code{x} contains three elements then \eqn{q = 3}; if \code{x} contains four elements then \eqn{q = 6}.
 }
 \value{
 It returns a list containing the following components:
-  \item{OVboot_stats }{Data frame \eqn{q \times 3}; each row  containing the following statistics:
+  \item{OVboot_stats }{a data frame \eqn{q \times 3} where each row contains the following statistics:
   \code{estOV}, estimated overlapping area, \eqn{\hat{\eta}};
-  \code{bias},  difference between the bootstrap's expected value and the observed value of the overlapping area: \eqn{E(\hat{\eta}^*)-\hat{\eta}};
+  \code{bias},  difference between the expected value over the bootstrap samples and the observed overlapping area: \eqn{E(\hat{\eta}^*)-\hat{\eta}};
   \code{se}, bootstrap standard error \eqn{\sigma_{\hat{\eta}}}.}
-  \item{OVboot_dist }{Matrix \eqn{B \times q}, \code{B} rows (bootstrap replicates) and \eqn{q} columns (depending on the number of elements of \code{x}); each column is a boostrap distribution of an overlapping index. }
+  \item{OVboot_dist }{a matrix with \code{B} rows (bootstrap replicates) and \eqn{q} columns (depending on the number of elements of \code{x}); each column is a boostrap distribution of the corresponding overlapping measure. }
 }
 \references{
-Pastore, M. (2018). Overlapping: a R package for Estimating Overlapping in Empirical Distributions. The Journal of Open Source Software, 3 (32), 1023.
-        URL: \url{https://doi.org/10.21105/joss.01023}
+Pastore, M. (2018). Overlapping: a R package for Estimating Overlapping in Empirical Distributions. The Journal of Open Source Software, 3 (32), 1023. \doi{https://doi.org/10.21105/joss.01023}
 
-Pastore, M., Calcagnì, A. (2019). Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index. Frontiers in Psychology, 10:1089. URL: \url{https://doi.org/10.3389/fpsyg.2019.01089}
+Pastore, M., Calcagnì, A. (2019). Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index. Frontiers in Psychology, 10:1089. \doi{https://doi.org/10.3389/fpsyg.2019.01089}
 }
 \author{
 Massimiliano Pastore
 }
 \note{
 Call function \code{\link{overlap}}.
+
+Thanks to Jeremy Vollen for suggestions.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

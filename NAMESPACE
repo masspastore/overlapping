@@ -1,4 +1,6 @@
 importFrom("graphics", "abline", "lines", "points", "text")
 importFrom("stats", "density", "sd")
+importFrom("utils","combn")
+importFrom("utils", "modifyList")
 exportPattern("^[[:alpha:]]+")
 import(ggplot2, testthat)
