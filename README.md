@@ -44,21 +44,12 @@ dataList <- list()
 for (j in 1:8) dataList <- c(dataList, list(rnorm(30)))
 
 OV <- overlap(dataList) # compute overlapping for all pairs
-head(OV$DD) # see the first rows of this data set
-table(OV$DD$k)        # k indicates the pairs
+OV$OV # general overlap area 
+OV$OVPairs # paired overlap areas
 
 # plot all pairs
-ggplot(OV$DD, aes(x,y1))+facet_wrap(~k)+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
-  geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+xlab("")+ylab("")
+overlap( dataList, plot = TRUE )
 
-# choose a single pair to be represented
-K <- "Y1-Y2" 
-data <- subset(OV$DD, k==K) # create a subset 
-
-# plot it
-ggplot(data, aes(x,y1))+geom_ribbon(aes(ymin=0,ymax=y1),alpha=.3,fill="red")+
-  geom_ribbon(aes(ymin=0,ymax=y2),alpha=.3,fill="blue")+
-  ggtitle(paste0("Overlap Y1-Y2 = ",round(OV$OV[K]*100,2),"%"))+xlab("")+ylab("")
 ```
 
 ### Support/Bug Reports
