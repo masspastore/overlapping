@@ -19,9 +19,20 @@ ovmult <- function(x, nbins = 1024, type = c( "1", "2" ), boundaries = NULL, get
   
   if (is.null(boundaries)) {
     boundaries <- range(unlist(x))
-  } 
-  from <- boundaries[1]
-  to <- boundaries[2]
+    from <- boundaries[1]
+    to <- boundaries[2]
+  } else {
+    # Gestisce sia boundaries come vettore che come lista
+    if (is.list(boundaries)) {
+      # Se è una lista con from e to
+      from <- min(boundaries$from)
+      to <- max(boundaries$to)
+    } else {
+      # Se è un vettore semplice
+      from <- boundaries[1]
+      to <- boundaries[2]
+    }
+  }
   
   # Stimo le densità direttamente su un dominio comune
   dens_list <- lapply(x, density, from = from, to = to, n = nbins, ... )
