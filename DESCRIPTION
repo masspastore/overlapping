@@ -1,8 +1,8 @@
 Package: overlapping
 Type: Package
 Title: Estimation of Overlapping in Empirical Distributions
-Version: 2.3
-Date: 2025-11-18
+Version: 2.4
+Date: 2026-02-17
 Author: Massimiliano Pastore [aut, cre],
   Pierfrancesco Alaimo Di Loro [ctb],
   Marco Mingione [ctb],

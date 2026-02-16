@@ -1,7 +1,14 @@
-#rm(list=ls())
-#x <- list( x1=rnorm(19), x2=rnorm(25,.5,2), x3=rchisq(21,4) )
 
-perm.pairs <- function(x) {
+#rm(list=ls())
+#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/paired.permutations.R")
+
+#n <- 3
+#x <- list( x1=rnorm(n), x2=rnorm(n,.5,2), x3=rchisq(n,4) )
+#i <- 1; j <- 2
+#paired <- TRUE
+
+
+perm.pairs <- function(x, paired = FALSE ) {
   
   ## gestione nomi 
   if (is.null(names(x))) names(x) <- paste("Y", 1:length(x), sep = "")
@@ -15,8 +22,13 @@ perm.pairs <- function(x) {
     for (j in (i+1):length(x)) {
       #cat(paste( i, j ),"\n")
       
-      xperm <- sample( unlist(x[c(i,j)]) )
-      xListperm <- list( xperm[1:N[i]], xperm[(N[i]+1):(length(xperm))] )
+      if (paired) {
+        xListperm <- paired.permutations( x[c(i,j)] )
+      } else {
+        xperm <- sample( unlist(x[c(i,j)]) )
+        xListperm <- list( xperm[1:N[i]], xperm[(N[i]+1):(length(xperm))] )
+      }
+      
       names(xListperm) <- LABELS[c(i,j)]
       NAMES <- c(NAMES, paste0(LABELS[c(i,j)], collapse = ".")) ## nomi
       
@@ -29,5 +41,14 @@ perm.pairs <- function(x) {
   return(XListPerm)
 }
 
+#z <- perm.pairs(x, paired = TRUE )
 
-#perm.pairs(x)
+#cbind( x[[1]], x[[2]] )
+#cbind( z[[1]][[1]], z[[1]][[2]] )
+
+#cbind( x[[1]], x[[3]] )
+#cbind( z[[2]][[1]], z[[2]][[2]] )
+
+#cbind( x[[2]], x[[3]] )
+#cbind( z[[3]][[1]], z[[3]][[2]] )
+

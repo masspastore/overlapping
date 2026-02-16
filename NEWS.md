@@ -1,3 +1,10 @@
+# overlapping 2.4 
+
+### Features
+
+- added paired permutation test
+- corrected `perm.test()` formula 
+
 # overlapping 2.3 
 
 ### Features

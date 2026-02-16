@@ -1,23 +1,25 @@
-\name{perm.pairs}
-\alias{perm.pairs}
+\name{paired.permutations}
+\alias{paired.permutations}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Paired permutation 
+Permutation for non-independent data
 }
 \description{
-Perform a random permutation of the data list. 
+Randomly permute the paired data. 
 }
 \usage{
-perm.pairs( x, paired = FALSE )
+paired.permutations( x )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{a list of numerical vectors to be compared (each vector is an element of the list).}
-  \item{paired}{\code{logical}; set to \code{TRUE} if the data are paired (i.e. non-independent samples). }
+  \item{x}{a list of two numerical vectors to be compared (each vector is an element of the list).}
 }
-%\details{
-% zero. 
-%}
+\details{
+When the data are paired (i.e. non-independent 
+observations), the exchange takes place within each pair. 
+Note: if the data are paired, the elements in the list must be of the same 
+length and in the same order. 
+}
 \value{
 It returns a list with paired elements of \code{x} randomly permuted.
 }
@@ -40,16 +42,8 @@ Internal function called by \code{\link{perm.test}}.
 %}
 \examples{
 set.seed(20150605)
-# independent samples
-x <- list(X1=rnorm(10), X2=rt(15,8)) 
-perm.pairs( x )
-
-x <- list(X1=rnorm(10), X2=rt(15,8), X3=rchisq(12,3))
-perm.pairs( x )
-
-# non-independent samples
-x <- list(X1=rnorm(10), X2=rt(10,8)) 
-perm.pairs( x, paired = TRUE )
+x <- list(X1=rnorm(10), X2=rt(10,8))
+paired.permutations( x )
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

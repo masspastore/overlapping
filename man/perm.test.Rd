@@ -8,18 +8,25 @@ Permutation test on the (non-)overlapping area
 Perform a permutation test on the overlapping index.
 }
 \usage{
-perm.test( x, B = 1000, 
+perm.test( x, paired = FALSE, B = 1000, 
           return.distribution = FALSE, ... )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a list of numerical vectors to be compared (each vector is an element of the list).}
+  \item{paired}{\code{logical}; set to \code{TRUE} if the data are paired (i.e. non-independent samples), see details. }
   \item{B}{integer, number of permutation replicates.}
   \item{return.distribution}{logical, if \code{TRUE} it returns the distribution of permuted Z statistics.}
   \item{...}{options, see function \code{\link{overlap}} for details.}
 }
 \details{
 It performs a permutation test of the null hypothesis that there is no difference between the two distributions, i.e. the overlapping index (\eqn{\eta}) is one, or the non-overlapping index (\eqn{1-\eta = \zeta}) is zero. 
+
+By default (\code{paired = FALSE}), it is assumed that the values in the list 
+are independent observations. If the data are paired (i.e. non-independent 
+observations; \code{paired = TRUE}), the exchange takes place within each pair. 
+Note: if the data are paired, the elements in the list must be of the same 
+length and in the same order. 
 }
 \value{
 It returns a list containing the following components:

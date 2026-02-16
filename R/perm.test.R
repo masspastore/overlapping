@@ -1,15 +1,19 @@
 
 #rm(list = ls())
-#source("/home/kolmogorov/MEGAsync/lavori/Rdevel/overlapping2.2/R/overlap.R")
-#source("/home/kolmogorov/MEGAsync/lavori/Rdevel/overlapping2.2/R/ovmult.R")
-#source("/home/kolmogorov/MEGAsync/lavori/Rdevel/overlapping2.2/R/final.plot.R")
-#xList <- list(rnorm(10),rnorm(12),rchisq(20,3))
-#B <- 10
+#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/overlap.R")
+#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/ovmult.R")
+#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/perm.pairs.R")
+#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/paired.permutations.R")
+
+#set.seed(1)
+#xList <- list(rnorm(4),rnorm(4),rchisq(4,3))
+#B <- 3
+#x <- xList
+#paired <- TRUE
 
 # ++++++++++++++++++++++++++++
 #' @name perm.test
-#' @description Esegue test di permutazione su overlapping, 
-#'differenza tra medie e rapporto tra varianze
+#' @description Esegue test di permutazione su overlapping
 #' @param x = lista di due elementi (\code{x1} e \code{x2} ) 
 #' @param B = numero di permutazioni da effettuare
 #' @return Restituisce una lista con tre elementi:
@@ -18,7 +22,7 @@
 #' perm = valori della stessa statistica ottenute
 #'        via permutazione
 #' pval = p-value   
-perm.test <- function (x, B = 1000, 
+perm.test <- function (x, paired = FALSE, B = 1000, 
                return.distribution = FALSE, ...)
 {
   
@@ -28,34 +32,41 @@ perm.test <- function (x, B = 1000,
   
   N <- unlist( lapply(x,length) )
   out <- overlap(x, ...)
+  #out <- overlap(x) # TEST
   
   if (pairsOverlap) {
     zobs <- 1-out$OVPairs
     Zperm <- t(sapply(1:B, function(b) {
-      xListperm <- perm.pairs( x )
+      xListperm <- perm.pairs( x, paired = paired )
       ovperm <- unlist( lapply(xListperm, overlap, ...) )
       zperm <- 1 - ovperm
     }))
   } else {
     zobs <- 1-out$OV
-    Zperm <- t(sapply(1:B, function(b) {
-      xperm <- sample( unlist( x ) )
-      xListperm <- list( x1 = xperm[1:N[1]], x2 = xperm[(N[1]+1):(sum(N))] )      
-      zperm <- 1 - overlap( xListperm, ... )$OV
-    }))
+    
+    if (paired) {
+      Zperm <- t(sapply( 1:B, function(b) {
+        xListperm <- paired.permutations( x )
+        zperm <- 1 - overlap( xListperm, ... )$OV
+        #zperm <- 1 - overlap( xListperm )$OV # TEST
+      }))
+    } else {
+      Zperm <- t(sapply(1:B, function(b) {
+        xperm <- sample( unlist( x ) )
+        xListperm <- list( x1 = xperm[1:N[1]], x2 = xperm[(N[1]+1):(sum(N))] )      
+        zperm <- 1 - overlap( xListperm, ... )$OV
+      }))
+    }
   }
-  
-  
-  ## (sum( zperm >= obsz ) +1) / (length( zperm )+1) LIVIO
-  
+
   colnames(Zperm) <- gsub("\\.OV","",colnames(Zperm))
   if (nrow(Zperm) > 1) {
     
     ZOBS <- matrix( zobs, nrow(Zperm), ncol(Zperm), byrow = TRUE )
-    pval <- apply( Zperm > ZOBS, 2, sum )/nrow(Zperm)
+    pval <- (apply( Zperm > ZOBS, 2, sum ) + 1) / (nrow(Zperm)+1)
     
   } else {
-    pval <- sum(Zperm > zobs) / length(Zperm)
+    pval <- (sum(Zperm > zobs)+1) / (length(Zperm)+1)
   }
   
   if (return.distribution) {
@@ -67,4 +78,4 @@ perm.test <- function (x, B = 1000,
   
 }
 
-#perm.test(xList,B=10)
+# perm.test(xList,B=10,paired = TRUE)
