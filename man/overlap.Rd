@@ -52,6 +52,9 @@ Massimiliano Pastore, Pierfrancesco Alaimo Di Loro, Marco Mingione
 }
 \note{
 Call function \code{\link{ovmult}}. 
+
+If list \code{x} contains \code{NAs} it returns a warning and
+deletes missing cases using \code{na.omit()}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -80,6 +83,9 @@ x <- list(X1=runif(N),X2=runif(N,.5))
 overlap(x)
 overlap(x, type = "2")
 
+# missing data
+x$X1[1:10] <- NA
+overlap(x)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

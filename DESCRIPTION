@@ -1,8 +1,8 @@
 Package: overlapping
 Type: Package
 Title: Estimation of Overlapping in Empirical Distributions
-Version: 2.4
-Date: 2026-02-17
+Version: 2.6
+Date: 2026-10-31
 Author: Massimiliano Pastore [aut, cre],
   Pierfrancesco Alaimo Di Loro [ctb],
   Marco Mingione [ctb],
@@ -26,6 +26,6 @@ Depends: R (>= 3.0.0), ggplot2, testthat
 License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2025-01-07 12:02:56 UTC; kolmogorov
+Packaged: 2026-08-31 12:02:56 UTC; kolmogorov
 Repository: CRAN
 Date/Publication: 2025-01-07 14:40:01 UTC

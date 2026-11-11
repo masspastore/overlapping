@@ -48,11 +48,31 @@ Thanks to Jeremy Vollen for suggestions.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
+
+set.seed(1)
+x <- list(Y1=rnorm(100), Y2=rnorm(90,1,3))
+## bootstrapping
+out <- boot.overlap( x, B = 20, pairsOverlap = TRUE )
+out$OVboot_stats
+
+# bootstrap quantile intervals
+quantile( out$OVboot_dist, probs = c(.05, .9) )
+
+# plot of bootstrap distributions
+Y <- data.frame( values = c(out$OVboot_dist) )
+ggplot( Y, aes( values )) + geom_density()
+
+# missing data
+x$Y1[1:10] <- NA
+out <- boot.overlap( x, B = 20, pairsOverlap = TRUE )
+out$OVboot_stats
+
+# ++++++++++++++++++++++++
 set.seed(20150605)
 x <- list(X1=rnorm(100), X2=rt(50,8), X3=rchisq(80,2))
 
 ## bootstrapping
-out <- boot.overlap( x, B = 10 )
+out <- boot.overlap( x, B = 10, pairsOverlap = TRUE )
 out$OVboot_stats
 
 # bootstrap quantile intervals

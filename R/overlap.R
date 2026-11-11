@@ -26,8 +26,11 @@ overlap <- function(x, nbins = 1024, type = c( "1", "2" ),
     warning("xpoints not implemented when pairsOverlap = TRUE")
     get_xpoints <- FALSE # solo per overlapping singoli
   }
-  # --------------------------------
   
+  # check missing
+  x <- check.missing( x )
+  
+  # --------------------------------
   # Aggiunge nomi alla lista contenente i vettori di probabilità, se non presenti
   if (is.null(names(x))) names(x) <- paste("Y", 1:length(x), sep = "")
   

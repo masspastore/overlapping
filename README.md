@@ -62,4 +62,6 @@ Pastore, M. (2018). Overlapping: a R package for Estimating Overlapping in Empir
 
 Pastore, M., Calcagnì, A. (2019). Measuring Distribution Similarities Between Samples: A Distribution-Free Overlapping Index. Frontiers in Psychology, 10:1089. URL: https://doi.org/10.3389/fpsyg.2019.01089
 
-Perugini, A., Calignano, G., Nucci, M., Finos, L., Pastore M. (2024, December 30). How do my distributions differ? Significance testing for the Overlapping Index using Permutation Test. URL: https://osf.io/preprints/osf/8h4fe_v1
+Calignano, G., Perugini, A., Nucci, M., Finos, L., Pastore M. (2026). How do my distributions differ? Significance testing for the Overlapping Index using Permutation Test. Psychonomic Bulletin & Review, 33:189. URL: https://doi.org/10.3758/s13423-026-02946-z
+
+Calignano, G., Perugini, A., Pastore M. (2026). How Robust is the Overlapping Index η? Kernel and Bandwidth Choices in Simulation and Real Data. Measurement: Interdisciplinary Research and Perspectives, 1-14. URL: https://doi.org/10.1080/15366367.2026.2704202

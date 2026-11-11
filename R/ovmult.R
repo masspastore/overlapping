@@ -1,3 +1,12 @@
+
+#rm(list = ls())
+#load("/home/cox/MEGA/lavori/Rdevel/data/overlapTest.rda")
+
+#x <- xList
+#nbins = 1024; type = "1"; 
+#pairsOverlap = FALSE; plot = FALSE; boundaries = NULL; 
+#get_xpoints = TRUE
+
 #' =========================================
 #' @title ovmult
 #' @description It computes the overlapped estimated area of two or more kernel density estimations from empirical data.
@@ -16,6 +25,9 @@ ovmult <- function(x, nbins = 1024, type = c( "1", "2" ), boundaries = NULL, get
   # --------------------------------
   # controls
   type <- match.arg(type)
+  
+  # check missing
+  x <- check.missing( x )
   
   if (is.null(boundaries)) {
     boundaries <- range(unlist(x))
@@ -58,10 +70,33 @@ ovmult <- function(x, nbins = 1024, type = c( "1", "2" ), boundaries = NULL, get
   
   if (get_xpoints) {
     # Calcolo i punti di cambio dominanza
+    
+    ddY <- lapply(dens_list, function(z){
+      data.frame( y=z$y ) 
+    })
+    ddY <- do.call( "cbind", ddY )
+    colnames(ddY) <- names(dens_list)
+    
     dd <- data.frame(x=dens_list[[1]]$x)
-    dd <- cbind(dd,dens_norm_mat)
-    dd$minimum <- apply(dd[,-1], 1, which.min )
-    xpoints <- dd$x[which(dd$minimum[2:nrow(dd)]!=dd$minimum[1:(nrow(dd)-1)])]
+    dd <- cbind( dd, ddY )
+    dd$maximum <- apply( dd[,-1],1, max )
+    dd$kmax <- apply( dd[,-1],1, which.max )
+    switch <- FALSE
+    for ( j in 2:nrow(dd)) {
+      sw <- ifelse( dd$kmax[j] != dd$kmax[j-1], TRUE, FALSE )
+      switch <- c( switch, sw )
+    }
+    dd$switch <- switch
+    xpoints <- dd$x[dd$switch]
+    
+    #ggplot( dd, aes(x,lowHSP)) +
+    #  geom_point() +
+    #  geom_point( aes(x, normativeHSP), color = "red" ) +
+    #  geom_point( aes(x, highHSP), color = "blue" ) +
+    #  geom_line( aes( x, maximum ), color = "green" )
+    # dd <- cbind(dd,dens_norm_mat)
+    # dd$minimum <- apply(dd[,-1], 1, which.min )
+    #xpoints <- dd$x[which(dd$minimum[2:nrow(dd)]!=dd$minimum[1:(nrow(dd)-1)])]
     
     return( list(OV=OVmulti,xpoints=xpoints) )   
   } else {

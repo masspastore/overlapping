@@ -1,12 +1,12 @@
 
 #rm(list = ls())
-#source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/overlap.R")
+#source("~/MEGA/lavori/Rdevel/overlapping_2.5/R/overlap.R")
 #source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/ovmult.R")
 #source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/perm.pairs.R")
 #source("~/MEGA/lavori/Rdevel/overlapping_2.4/R/paired.permutations.R")
 
 #set.seed(1)
-#xList <- list(rnorm(4),rnorm(4),rchisq(4,3))
+#xList <- list(c(rnorm(3),NA),rnorm(4),rchisq(4,3))
 #B <- 3
 #x <- xList
 #paired <- TRUE
@@ -78,4 +78,4 @@ perm.test <- function (x, paired = FALSE, B = 1000,
   
 }
 
-# perm.test(xList,B=10,paired = TRUE)
+#perm.test(xList,B=10,paired = TRUE)

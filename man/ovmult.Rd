@@ -34,6 +34,10 @@ Pierfrancesco Alaimo Di Loro, Marco Mingione, Massimiliano Pastore
 }
 \note{
 Called from the function \code{\link{overlap}}. 
+
+If list \code{x} contains \code{NAs} it returns a warning and
+deletes missing cases using \code{na.omit()}.
+
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -56,6 +60,10 @@ ovmult(x, boundaries=c( .2, .8 ))
 
 # changing kernel
 ovmult(x, kernel="rectangular")
+
+# missing data
+x$X3[1:10] <- NA
+ovmult(x)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

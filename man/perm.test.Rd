@@ -36,7 +36,8 @@ It returns a list containing the following components:
 
 }
 \references{
-Perugini, A., Calignano, G., Nucci, M., Finos, L., & Pastore, M. (2024, December 30). How do my distributions differ? Significance testing for the Overlapping Index using Permutation Test. \doi{https://doi.org/10.31219/osf.io/8h4fe}
+Calignano, G., Perugini, A., Nucci, M., Finos, L., Pastore M. (2026). How do my distributions differ? Significance testing for the Overlapping Index using Permutation Test. Psychonomic Bulletin & Review, 33:189. 
+\doi{https://doi.org/10.3758/s13423-026-02946-z}
 }
 \author{
 Massimiliano Pastore

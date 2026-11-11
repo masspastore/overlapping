@@ -1,13 +1,14 @@
 
 #rm( list = ls() )
-#source( "/home/cox/MEGA/lavori/Rdevel/overlapping_2.3/R/overlap.R" )
-#source( "/home/cox/MEGA/lavori/Rdevel/overlapping_2.3/R/ovmult.R" )
+#source( "/home/cox/MEGA/lavori/Rdevel/overlapping_2.5/R/overlap.R" )
+#source( "/home/cox/MEGA/lavori/Rdevel/overlapping_2.5/R/ovmult.R" )
 
 #x <- list(X1=rnorm(100), X2=rt(50,8) ) #, X3=rchisq(80,2))
 #B <- 10; pairsOverlap = FALSE
 
 boot.overlap <- function (x, B = 1000, pairsOverlap = FALSE, ...)
 {
+  
   dots <- list(...)
   density_params <- formals(density)
   density_args <- modifyList(density_params, dots)
@@ -15,6 +16,7 @@ boot.overlap <- function (x, B = 1000, pairsOverlap = FALSE, ...)
   
   # control 
   if (length(x) == 2 & pairsOverlap == TRUE) pairsOverlap <- FALSE
+  x <- check.missing( x )
   
   out <- do.call(overlap, c(list(x), density_args))
   
@@ -43,7 +45,8 @@ boot.overlap <- function (x, B = 1000, pairsOverlap = FALSE, ...)
   return(list(OVboot_stats = OVboot, OVboot_dist = outb )) 
 }
  
-#BB <- boot.overlap( x, B = 1000, bw = 1, kernel = "epanechnikov" )
+#x$X2[1:10] <- NA
+#BB <- boot.overlap( x, B = 1000 )
 #plot( density( BB$OVboot_dist ) )
 #abline( v = BB$OVboot_stats$estOV )
 
